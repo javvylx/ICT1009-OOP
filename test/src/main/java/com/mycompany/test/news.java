@@ -6,18 +6,16 @@
 package com.mycompany.test;
 
 import java.util.*;
+
 /**
  *
  * @author chinb
  */
+public class news {
 
-public class news{
-    private String publishedAt;
-    private String author, urlToImage; 
-    private String[] source;
-    private String description, title, url, content;
-    
-    public news(String publishedAt, String author, String urlToImage, String description, String title, String url, String content) {
+    private String publishedAt, author, urlToImage, description, title, url, content, sourceID, sourceName;
+
+    public news(String publishedAt, String author, String urlToImage, String description, String title, String url, String content, String sourceID, String sourceName) {
         this.publishedAt = publishedAt;
         this.author = author;
         this.urlToImage = urlToImage;
@@ -25,6 +23,8 @@ public class news{
         this.title = title;
         this.url = url;
         this.content = content;
+        this.sourceID = sourceID;
+        this.sourceName = sourceName;
     }
 
     public String getpublishedAt() {
@@ -54,5 +54,25 @@ public class news{
     public String getcontent() {
         return content;
     }
-}
 
+    public String getsourceID() {
+        return sourceID;
+    }
+
+    public String getsourceName() {
+        return sourceName;
+    }
+    
+    @Override
+    public String toString(){
+        return "Published at: " + publishedAt
+                + "\nAuthor: " + author
+                + "\nUrl To Image:  " + urlToImage
+                + "\nDescription " + description
+                + "\nTitle: " +  title
+                + "\nUrl: " + url
+                + "\nContent: " + content
+                + "\nSource ID: " + sourceID
+                + "\nSource Name: " + sourceName;
+    }
+}
