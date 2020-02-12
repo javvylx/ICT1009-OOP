@@ -41,18 +41,19 @@ public class test {
         List<Double> valueHour = stockPrediction.predictionList(HHashstocks, 1);
         List<Double> valueDay = stockPrediction.predictionList(DHashstocks, 2);
 //        
-        String[] HclosingPrediction = stockPrediction.calculate(symbol, valueHour);
-        for (String each : HclosingPrediction) {
-            System.out.println(each);
-        }
-        String[] DclosingPrediction = stockPrediction.calculate(symbol, valueDay);
-        for (String each : DclosingPrediction) {
-            System.out.println(each);
-        }
-//        for (int i = 0; i < Hashstocks.size(); i++) {
-//            stocksHourlyDateTime stockstemp = (stocksHourlyDateTime) Hashstocks.get(i);
-//            System.out.println(stockstemp.toString());
+//        String[] HclosingPrediction = stockPrediction.calculate(symbol, valueHour);
+//        for (String each : HclosingPrediction) {
+//            System.out.println(each);
 //        }
+//        String[] DclosingPrediction = stockPrediction.calculate(symbol, valueDay);
+//        for (String each : DclosingPrediction) {
+//            System.out.println(each);
+//        }
+        
+        for (int i = 0; i < HHashstocks.size(); i++) {
+            stocksHourlyDateTime stockstemp = (stocksHourlyDateTime) HHashstocks.get(i);
+            System.out.println(stockstemp.toString());
+        }
     }
 
 }
