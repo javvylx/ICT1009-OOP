@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.test;
+package com.mycompany.main;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
-
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 /**
  *
  * @author chinb
  */
 public class stockPrediction {
-
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
     public static String[] calculate(String stockId, List<Double> value) {
         String[] values = new String[6];
 
@@ -54,6 +55,8 @@ public class stockPrediction {
 //        if (LOGGER.isDebugEnabled()) {
 //            LOGGER.debug("Avg price :" + avgPrice + " Moving avg price :" + movingAvgPrice);
 //        }
+        
+        df2.setRoundingMode(RoundingMode.DOWN);
         double closing1 = value.get(value.size() - 1) + avgChange;
         double closing2 = closing1 + avgChange;
         double closing3 = closing2 + avgChange;
@@ -61,11 +64,11 @@ public class stockPrediction {
         double closing5 = closing4 + avgChange;
 
         values[0] = stockId;
-        values[1] = Double.toString(closing1);
-        values[2] = Double.toString(closing2);
-        values[3] = Double.toString(closing3);
-        values[4] = Double.toString(closing4);
-        values[5] = Double.toString(closing5);
+        values[1] = df2.format(closing1).toString();
+        values[2] = df2.format(closing2).toString();
+        values[3] = df2.format(closing3).toString();
+        values[4] = df2.format(closing4).toString();
+        values[5] = df2.format(closing5).toString();
 //		values[5] = Double.toString(value.get(value.size() - 1));
 
         double quotient = avgChange;
@@ -74,18 +77,20 @@ public class stockPrediction {
     }
 
     public static List<Double> predictionList(HashMap temp, int swap) {
+    	
+    	
         List<Double> pList1 = new ArrayList<>();
         List<Double> pList2 = new ArrayList<>();
         switch (swap) {
             case 1:
                 for (int i = temp.size() - 1; i > temp.size() - 10; i--) {
-                    stocksHourlyDateTime stockstemp1 = (stocksHourlyDateTime) temp.get(i);
+                    stocksHourly stockstemp1 = (stocksHourly) temp.get(i);
                     Double a = Double.valueOf(stockstemp1.getClose());
                     pList1.add(a);
                 }
                 return pList1;
             case 2:
-                for (int i = temp.size() - 1; i > temp.size() - 7; i--) {
+                for (int i = temp.size() - 1; i > temp.size() - 3; i--) {
                     stocksDaily stockstemp2 = (stocksDaily) temp.get(i);
                     Double a = Double.valueOf(stockstemp2.getClose());
                     pList2.add(a);

@@ -1,4 +1,4 @@
-package com.mycompany.test;
+package com.mycompany.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

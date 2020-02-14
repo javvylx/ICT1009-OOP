@@ -1,0 +1,10 @@
+
+*.java
+test/.classpath
+test/src/main/java/com/mycompany/test/test.java
+test/target/classes/com/mycompany/test/crawlGoogle.class
+test/target/classes/com/mycompany/test/department.class
+test/target/classes/com/mycompany/test/stocksapiMethod$1.class
+test/target/classes/com/mycompany/test/stocksapiMethod.class
+test/target/classes/com/mycompany/test/test.class
+test/target/classes/com/mycompany/test/urlimage.class

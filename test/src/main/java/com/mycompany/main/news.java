@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.test;
+package com.mycompany.main;
 
-import java.util.*;
 
 /**
- *
- * @author chinb
+ * Java Object - news
+ * 
+ * Method created here - getpublishedAt, getauthor, geturlToImage, getdescription, gettitle, geturl, getcontent, getsourceID
+ * 						 getsourceName
  */
 public class news {
 

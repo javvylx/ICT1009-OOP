@@ -1,4 +1,4 @@
-package com.mycompany.test;
+package com.mycompany.main;
 
 import java.awt.Color;
 import java.awt.Component;

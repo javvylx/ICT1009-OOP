@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.test;
+package com.mycompany.main;
+
 
 /**
- *
- * @author chinb
+ * Java Object - stocksInfo
+ * 
+ * Parents class - stocksInfo
+ * Child class - stocksHourly, stocksDaily, stocksWeekly, stocksMonthly
+ * 
+ * Method created here - getInfo, getSymbol, getlastRef, getInterval, gettimeZone, toString
  */
 public class stocksInfo {
 
-    private String info, symbol, lastRef, interval, outputsize, timeZone;
-
+    protected String info, symbol, lastRef, interval, outputsize, timeZone;	
+    
+    
     public stocksInfo(String info, String symbol, String lastRef, String interval, String outputsize, String timeZone) {
         this.info = info;
         this.symbol = symbol;
