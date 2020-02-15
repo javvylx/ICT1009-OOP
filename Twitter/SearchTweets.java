@@ -9,12 +9,10 @@ import org.json.simple.JSONObject;
 
 public class SearchTweets {
 	public static void getTweets(String s ) {
-		//initialise new json object
-		JSONObject obj = new JSONObject();
+		
 		//initialise new twitter object
 		Twitter twitter = new TwitterFactory().getInstance();
-		//initialse new json array
-		JSONArray mytweet = new JSONArray();
+		
 		//initialise counter to limit to 20 tweets
 		int counter=0;
         try {
@@ -26,6 +24,10 @@ public class SearchTweets {
             List<Status> tweets = result.getTweets();
             do {
                 for (Status tweet : tweets) {
+                	//initialise new json object
+            		JSONObject obj = new JSONObject();
+                	//initialse new json array
+            		JSONArray mytweet = new JSONArray();
                 	//remove retweets
                 	if(tweet.isRetweet() == false) {
                 		java.util.Date tweetdate = tweet.getCreatedAt();
@@ -41,21 +43,22 @@ public class SearchTweets {
                         obj.put("tweet",mytweet);
                         counter += 1;
                         //System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() ); 
+                        try {
+                        	// create system path for json output file
+                        	String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
+                        	//true to append data to twitter.json
+                        	FileWriter file = new FileWriter(syspath,true);
+                        	//write to json file
+                        	file.write(obj.toJSONString());
+                        	file.flush();
+                            file.close();
+                        } catch (IOException e) {
+                        	e.printStackTrace();
+                        } 
                 	}
                 }
             } while (counter <= 20);
-            try {
-            	// create system path for json output file
-            	String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
-            	//true to append data to twitter.json
-            	FileWriter file = new FileWriter(syspath,true);
-            	//write to json file
-            	file.write(obj.toJSONString());
-            	file.flush();
-                file.close();
-            } catch (IOException e) {
-            	e.printStackTrace();
-            } 
+            
             System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
