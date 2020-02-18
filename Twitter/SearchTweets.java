@@ -27,20 +27,21 @@ public class SearchTweets {
                 	//initialise new json object
             		JSONObject obj = new JSONObject();
                 	//initialse new json array
-            		JSONArray mytweet = new JSONArray();
+            		JSONObject twitteroutput = new JSONObject();
+            		
                 	//remove retweets
                 	if(tweet.isRetweet() == false) {
                 		java.util.Date tweetdate = tweet.getCreatedAt();
                     	//add tweet date to the array
-                        mytweet.add(tweetdate);
+                		twitteroutput.put("date",tweetdate);
                         //add username to the array
                         String username = tweet.getUser().getScreenName();
-                        mytweet.add(username);
+                        twitteroutput.put("user",username);
                         //add tweet to the array
                         String tweettext = tweet.getText();
-                        mytweet.add(tweettext);
+                        twitteroutput.put("content",tweettext);
                         //put tweet into json object
-                        obj.put("tweet",mytweet);
+                        obj.put("tweet",twitteroutput);
                         counter += 1;
                         //System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() ); 
                         try {
