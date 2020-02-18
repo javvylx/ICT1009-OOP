@@ -22,13 +22,13 @@ public class SearchTweets {
             //search for keyword
             result = twitter.search(query);
             List<Status> tweets = result.getTweets();
+            //initialse new json array
+    		JSONArray jarray = new JSONArray();
             do {
                 for (Status tweet : tweets) {
                 	//initialise new json object
             		JSONObject obj = new JSONObject();
-                	//initialse new json array
             		JSONObject twitteroutput = new JSONObject();
-            		
                 	//remove retweets
                 	if(tweet.isRetweet() == false) {
                 		java.util.Date tweetdate = tweet.getCreatedAt();
@@ -42,24 +42,25 @@ public class SearchTweets {
                         twitteroutput.put("content",tweettext);
                         //put tweet into json object
                         obj.put("tweet",twitteroutput);
+                        jarray.add(obj);
                         counter += 1;
                         //System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() ); 
-                        try {
-                        	// create system path for json output file
-                        	String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
-                        	//true to append data to twitter.json
-                        	FileWriter file = new FileWriter(syspath,true);
-                        	//write to json file
-                        	file.write(obj.toJSONString());
-                        	file.flush();
-                            file.close();
-                        } catch (IOException e) {
-                        	e.printStackTrace();
-                        } 
+                       
                 	}
                 }
             } while (counter <= 20);
-            
+            try {
+            	// create system path for json output file
+            	String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
+            	//true to append data to twitter.json
+            	FileWriter file = new FileWriter(syspath,true);
+            	//write to json file
+            	jarray.writeJSONString(file);
+            	file.flush();
+                file.close();
+            } catch (IOException e) {
+            	e.printStackTrace();
+            } 
             System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
