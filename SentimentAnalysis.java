@@ -1,9 +1,14 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -14,14 +19,45 @@ import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.SentimentAnnotatedTre
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.CoreMap;
 
+class marks{
 
+	private int pos = 0;
+	private int neg = 0;
+	private int neu = 0;
+	private int total = 0;
+	public marks() {}
+	public void addpos () {
+		   pos ++;
+		   total++;
+		} 
+	public void addneg () {
+		   neg ++;
+		   total++;
+		} 
+	public void addneu () {
+		   neu ++;
+		   total++;
+		} 
+	public int getpos() {
+		return pos;
+	}public int getneg() {
+		return neg;
+	}public int getneu() {
+		return neu;
+	}public int gettotal() {
+		return total;
+	}
+	public void reset() {
+		pos = 0;
+		neg = 0;
+		neu = 0;
+		total = 0;
+	}
+	
+}
 public class SentimentAnalysis {
 
- //Regex for extracting data out from .txt file
- private static final Pattern content = Pattern.compile("(?:\"tweet\":).*(?:2020, )(.*)(?:]})"); //for json file
-
-
- public static String getSentiment(String sentence) {
+ public static String getSentiment(String sentence, marks marker) {
   if (sentence == null ) {
    return "";
   }
@@ -59,13 +95,16 @@ public class SentimentAnalysis {
           
           if (mainSentiment == 2 || mainSentiment > 4 || mainSentiment < 0) {
               sentimentString = "NEUTRAL";
+            marker.addneu();
           }
           else if (mainSentiment == 0 || mainSentiment == 1) {
            sentimentString = "NEGATIVE";
+          marker.addneg();
           }
           else {
            //3 or 4
            sentimentString = "POSITIVE";
+           marker.addpos();
           }
     
     output = new Gson().toJson(sentimentString);
@@ -78,46 +117,60 @@ public class SentimentAnalysis {
   return "Sentiment: " + output;
  }
  
+ 
 
- public static void main(String args[]) throws IOException {
-  try {
-   ArrayList<String> tweets = new ArrayList<String>();
+ private static void passtweetObject(JSONObject tweet, marks marker) 
+ {
+     //Get object within list
+     JSONObject tweetObject = (JSONObject) tweet.get("tweet");
+     //Get date
+    // String date = (String) tweetObject.get("date");    
+   //  System.out.println(date);
+      
+     //Get username
+    // String user = (String) tweetObject.get("username");  
+   //  System.out.println(user);
+      
+     //Get content
+     String content = (String) tweetObject.get("content");    
+   //  System.out.println(content);
+     String Sentiment;
+     Sentiment = getSentiment(content,marker);
+ //  System.out.println(Sentiment);
+   //  System.out.println();
 
-   // output
-   ArrayList<String> words = new ArrayList<String>();
-   BufferedReader file = new BufferedReader(new FileReader("twitter.json"));
-   String line = "";
-   while ((line = file.readLine()) != null) {
-    words.add(line);
-   }
+ }
+ @SuppressWarnings("unchecked")
+public static void main(String args[]) throws IOException {
+ marks marker = new marks();
+	 JSONParser jsonParser = new JSONParser();
+	 String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
+     try (FileReader reader = new FileReader(syspath))
+     {
+         //Read JSON file
+         Object obj = jsonParser.parse(reader);
 
-   file.close();
+         JSONArray tweetList = (JSONArray) obj;
+      //   System.out.println(tweetList);
+          
+         //Iterate over tweet array
+         tweetList.forEach( twee -> passtweetObject( (JSONObject) twee, marker));
 
-   for (int i = 0; i < words.size(); i++) {
-    Matcher m = content.matcher(words.get(i));
-    if (m.find()) {
-     tweets.add(m.group(1));
-     System.out.println(m.group(1));
-    }
-   }
-   
-   
-   String sentimentScore;
-   
-   for (int i = 0; i < tweets.size(); i++) {
-    sentimentScore = getSentiment(tweets.get(i));
-    System.out.println(sentimentScore);
-   }
+     } catch (FileNotFoundException e) {
+         e.printStackTrace();
+     } catch (IOException e) {
+         e.printStackTrace();
+     } catch (ParseException e) {
+         e.printStackTrace();
+     }
+     System.out.printf("Positive: %d\nNegative: %d\nNeutral: %d\n", marker.getpos(), marker.getneg(), marker.getneu());
+     //marker.reset();
+     System.out.printf("Total Sentiments: %d",marker.gettotal());
 
-  }
 
-  catch (
 
-  FileNotFoundException e) {
-   e.printStackTrace();
 
-  }
   
  }
- 
+
 }
