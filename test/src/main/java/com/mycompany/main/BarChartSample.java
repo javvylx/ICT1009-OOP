@@ -1,64 +1,51 @@
 package com.mycompany.main;
 
-import java.awt.event.WindowEvent;
-import java.beans.EventHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
  
-public class BarChartSample extends Application {
-    final static String austria = "Australia";
-    final static String brazil = "Brazil";
-    final static String france = "France";
-    final static String italy = "Italy";
-    final static String usa = "USA";
-    final static String sg = "SG";
-    Stage s;
-    @Override public void start(Stage stage) {
-        s=stage;
-        stage.setTitle("Stock Price");
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = new BarChart<String,Number>(xAxis,yAxis);
-        bc.setTitle("Stock Price"); //Title of BarChart 
-        xAxis.setLabel("Country");       //x-axis chart
-        yAxis.setLabel("Stock rate"); //y-axis chart
  
-        XYChart.Series series1 = new XYChart.Series();
-        //For single line bar char for multi line we have to make more series and give it more values
+public class BarChartSample extends Application {
+ 
+    @Override public void start(Stage stage) {
+        stage.setTitle("Line Chart Sample");
+        //defining the axes
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Number of Month");
+        //creating the chart
+        final LineChart<Number,Number> lineChart = 
+                new LineChart<Number,Number>(xAxis,yAxis);
+                
+        lineChart.setTitle("Stock Monitoring, 2010");
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("My portfolio");
+        //populating the series with data
+        series.getData().add(new XYChart.Data(1, 23));
+        series.getData().add(new XYChart.Data(2, 14));
+        series.getData().add(new XYChart.Data(3, 15));
+        series.getData().add(new XYChart.Data(4, 24));
+        series.getData().add(new XYChart.Data(5, 34));
+        series.getData().add(new XYChart.Data(6, 36));
+        series.getData().add(new XYChart.Data(7, 22));
+        series.getData().add(new XYChart.Data(8, 45));
+        series.getData().add(new XYChart.Data(9, 43));
+        series.getData().add(new XYChart.Data(10, 17));
+        series.getData().add(new XYChart.Data(11, 29));
+        series.getData().add(new XYChart.Data(12, 25));
         
-        series1.setName("2020");       
-        series1.getData().add(new XYChart.Data(austria, 25601.34));
-        series1.getData().add(new XYChart.Data(brazil, 20148.82));
-        series1.getData().add(new XYChart.Data(france, 10000));
-        series1.getData().add(new XYChart.Data(italy, 35407.15));
-        series1.getData().add(new XYChart.Data(usa, 12000));  
-        series1.getData().add(new XYChart.Data(sg, 15333));  
-        
-        Scene scene  = new Scene(bc,500,600);// Create Window Scene
-         Platform.setImplicitExit(false);
-        bc.getData().addAll(series1);
+        Scene scene  = new Scene(lineChart,800,600);
+        lineChart.getData().add(series);
+       
         stage.setScene(scene);
-        
         stage.show();
-        stage.setOnCloseRequest(new javafx.event.EventHandler<javafx.stage.WindowEvent>() {
-            @Override
-            public void handle(javafx.stage.WindowEvent t) {
-                Platform.exit(); // Program Exit
-                System.exit(0);
-            }
-        });
-        
     }
+ 
     public static void main(String[] args) {
-        launch(null); //Application is launch only once in Java
-        
+        launch(args);
     }
 }

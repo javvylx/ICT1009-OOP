@@ -8,3 +8,5 @@ test/target/classes/com/mycompany/test/stocksapiMethod$1.class
 test/target/classes/com/mycompany/test/stocksapiMethod.class
 test/target/classes/com/mycompany/test/test.class
 test/target/classes/com/mycompany/test/urlimage.class
+*.classpath
+test/.classpath
