@@ -5,6 +5,6 @@ public class Main {
 		//Initialise class for twitter scraper
 		SearchTweets mytweet = new SearchTweets();
 		//program to replace the below keyword with search option from GUI
-		mytweet.getTweets("Facebook");
+		mytweet.getTweets("Stocks");
 	}
 }

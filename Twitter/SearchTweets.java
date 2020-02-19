@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import java.text.DateFormat; 
+import java.text.SimpleDateFormat;
 
 public class SearchTweets {
 	public static void getTweets(String s ) {
@@ -32,8 +34,10 @@ public class SearchTweets {
                 	//remove retweets
                 	if(tweet.isRetweet() == false) {
                 		java.util.Date tweetdate = tweet.getCreatedAt();
+                		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+                        String strDate = dateFormat.format(tweetdate);  
                     	//add tweet date to the array
-                		twitteroutput.put("date",tweetdate);
+                		twitteroutput.put("date",strDate);
                         //add username to the array
                         String username = tweet.getUser().getScreenName();
                         twitteroutput.put("user",username);
@@ -53,7 +57,7 @@ public class SearchTweets {
             	// create system path for json output file
             	String syspath = System.getProperty("user.home")+ "\\Desktop\\" + "twitter.json";
             	//true to append data to twitter.json
-            	FileWriter file = new FileWriter(syspath,true);
+            	FileWriter file = new FileWriter(syspath);
             	//write to json file
             	jarray.writeJSONString(file);
             	file.flush();
