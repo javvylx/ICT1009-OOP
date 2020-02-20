@@ -12,10 +12,10 @@ import com.mashape.unirest.http.HttpResponse;
 
 public class main {
 
-    public static String pageSize = "100", cat = "top-headlines", q = "", symbol = "MSFT";
+    public static String pageSize = "100", cat = "top-headlines", q = "", symbol = "MSFT", country = "";
 
     public static void main(String[] args) throws Exception {
-        HttpResponse<JsonNode> newsResponse = newsapiMethod.newsapi(q, cat, pageSize);
+        HttpResponse<JsonNode> newsResponse = newsapiMethod.newsapi(q, cat, pageSize,country);
         HashMap Hashnews = newsapiMethod.createHashMap(newsResponse);
 
         HttpResponse<JsonNode> HstocksResponse = stocksapiMethod.Hstocksapi(symbol);
@@ -30,9 +30,9 @@ public class main {
         HttpResponse<JsonNode> MstocksResponse = stocksapiMethod.Mstocksapi(symbol);
         HashMap MHashstocks = stocksapiMethod.createHashMap(MstocksResponse, 4);
         
-        stocksDaily stockstmp = (stocksDaily) DHashstocks.get(1);
-        System.out.println(stockstmp.getStocksInfo());
-        
+//        stocksDaily stockstmp = (stocksDaily) DHashstocks.get(1);
+//        System.out.println(stockstmp.getStocksInfo());
+
 //        /**
 //         * FOR MY TEAMMATES - WHATSAPP THE GROUP IF YOU RUN INTO ANY ERROR, DONT KEEP QUIET. THANKS
 //         * I have created 3 for loops to display information, comment out the necessary ones for it to run
@@ -46,13 +46,34 @@ public class main {
       			news newstemp = (news) Hashnews.get(i);
       			System.out.println(newstemp.toString());
   				}
-  				
+//  				
   				
 //         * 2 - For loop for stocks (change the Hashmap variable if need by for differe variations, e.g HHashstocks to WHstocks)
-//         *       for (int i = 0; i < HHashstocks.size(); i++) {
-//      			 stocksInfo stockstemp = (stocksInfo) HHashstocks.get(i);
+//                for (int i = 0; i < WHashstocks.size(); i++) {
+//      			 stocksWeekly stockstemp = (stocksWeekly) WHashstocks.get(i);
 //      			 System.out.println(stockstemp.toString());
 //      			 }
+//      for (int i = 0; i < HHashstocks.size(); i++) {
+//		 stocksHourly stockstemp = (stocksHourly) HHashstocks.get(i);
+//		 System.out.println(stockstemp.toString());
+//		 }
+//      for (int i = 0; i < DHashstocks.size(); i++) {
+//		 stocksDaily stockstemp = (stocksDaily) DHashstocks.get(i);
+//		 System.out.println(stockstemp.toString());
+//		 }
+//      for (int i = 0; i < MHashstocks.size(); i++) {
+//		 stocksMonthly stockstemp = (stocksMonthly) MHashstocks.get(i);
+//		 System.out.println(stockstemp.toString());
+//		 }
+//      for (int i = 0; i < WHashstocks.size(); i++) {
+//		 stocksWeekly stockstemp = (stocksWeekly) WHashstocks.get(i);
+//		 System.out.println(stockstemp.toString());
+//		 }
+        
+//      for (int i = 0; i < HHashstocks.size(); i++) {
+//		 stocksInfo stockstemp = (stocksInfo) HHashstocks.get(i);
+//		 System.out.println(stockstemp.toString());
+//		 }
 //      
 //          
 //         * 3 - For loop for prediction stocks
