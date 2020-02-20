@@ -28,7 +28,7 @@
          <children>
             <AnchorPane layoutX="14.0" layoutY="30.0" prefHeight="583.0" prefWidth="607.0">
                <children>
-                  <TextArea fx:id="newsarticlefield" editable="false" layoutY="-1.0" prefHeight="592.0" prefWidth="618.0" style="-fx-background-color: #ffffff; -fx-max-width: 618; -fx-pref-width: 618; -fx-border-width: 618;" />
+                  <TextArea fx:id="newsarticlefield" editable="false" layoutY="-1.0" prefHeight="592.0" prefWidth="618.0" style="-fx-background-color: #ffffff; -fx-wrap-text: true;" />
                </children>
             </AnchorPane>
             <Label layoutX="232.0" text="NEWS ARTICLES" underline="true" wrapText="true">
@@ -50,7 +50,7 @@
             <Line endX="1059.0" layoutX="107.0" layoutY="630.0" startX="-100.0" />
             <AnchorPane layoutX="642.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextArea fx:id="twitterfeedfield" editable="false" layoutX="-6.0" prefHeight="592.0" prefWidth="523.0" style="-fx-background-color: #ffffff;" />
+                  <TextArea fx:id="twitterfeedfield" editable="false" layoutX="-6.0" prefHeight="592.0" prefWidth="523.0" style="-fx-background-color: #ffffff; -fx-wrap-text: true" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

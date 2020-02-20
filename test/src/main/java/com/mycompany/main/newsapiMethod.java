@@ -65,11 +65,16 @@ public class newsapiMethod {
 	public static HttpResponse<JsonNode> newsapi(String q, String cat, String pageSize, String country) throws Exception {
 		HttpResponse<JsonNode> response = Unirest.get(
 				"https://newsapi.org/v2/{cat}?country={country}&category=business&keywords={keywords}&pageSize={pageSize}&apiKey={APIkey}")
-				.routeParam("cat", cat).routeParam("country", country).routeParam("keywords", q)
-				.routeParam("pageSize", pageSize).routeParam("APIkey", "1e86e5f07d6a4928b8a2075788d360ee").asJson();
-
-		System.out.println(response.getStatus());
-		System.out.println(response.getHeaders().get("Content-Type"));
+				.routeParam("cat", cat)
+				.routeParam("country", country)
+				.routeParam("keywords", q)
+				.routeParam("pageSize", pageSize)
+				.routeParam("APIkey", "1e86e5f07d6a4928b8a2075788d360ee")
+				.asJson();
+		
+//		System.out.println(country);
+//		System.out.println(response.getStatus());
+//		System.out.println(response.getHeaders().get("Content-Type"));
 		return response;
 	}
 
