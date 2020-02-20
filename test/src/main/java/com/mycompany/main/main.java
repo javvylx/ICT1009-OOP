@@ -77,13 +77,8 @@ public class main {
 //      
 //          
 //         * 3 - For loop for prediction stocks
-//         *         List<Double> valueHour = stockPrediction.predictionList(HHashstocks, 1);
-//        			List<Double> valueDay = stockPrediction.predictionList(DHashstocks, 2);
-//        
-//        			String[] HclosingPrediction = stockPrediction.calculate(symbol, valueHour);
-//        			for (String each : HclosingPrediction) {
-//            		System.out.println(each);
-//        			}
+//        			List<Double> valueDay = stockPrediction.predictionList(DHashstocks);
+//       
 //        			String[] DclosingPrediction = stockPrediction.calculate(symbol, valueDay);
 //        			for (String each : DclosingPrediction) {
 //            		System.out.println(each);
