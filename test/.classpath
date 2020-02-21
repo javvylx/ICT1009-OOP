@@ -19,52 +19,52 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.base.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.controls.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.controls.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.fxml.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.fxml.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.graphics.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.media.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.media.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.swing.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.swing.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.web.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx.web.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx-swt.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/javafx-sdk-13.0.2/lib/javafx-swt.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/jcommon-1.0.23.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/jcommon-1.0.23.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Dropbox/SIT/Year 1.1/Trimester 2/1009 - OOP/Project/ICT1009-OOP/test/External JARs/jfreechart-1.0.19.jar">
+	<classpathentry kind="lib" path="C:/Users/chinb/Desktop/OOP/ICT1009-OOP/test/External JARs/jfreechart-1.0.19.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
